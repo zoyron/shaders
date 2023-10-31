@@ -6,5 +6,5 @@ precision mediump float; // setting the precision as medium because GL_ES is usu
 
 uniform float u_time;
 void main(){
-  gl_FragColor = vec4(1.000,1.0,0.0,1.000);
+  gl_FragColor = vec4(0,1,0,1);
 }
