@@ -4,7 +4,6 @@ import GUI from "lil-gui";
 import testVertexShader from './shaders/test/vertex.glsl'
 import testFragmentShader from './shaders/test/fragment.glsl'
 
-
 /**
  * Base
  */
@@ -27,12 +26,12 @@ const textureLoader = new THREE.TextureLoader();
  * Test mesh
  */
 // Geometry
-const geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
+const geometry = new THREE.PlaneGeometry(0.5, 0.5, 32, 32);
 
 // Material
-const material = new THREE.MeshBasicMaterial({
-  wireframe: true,
-  side: THREE.DoubleSide,
+const material = new THREE.RawShaderMaterial({
+    vertexShader: testVertexShader,
+    fragmentShader: testFragmentShader,
 });
 
 // Mesh
