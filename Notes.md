@@ -5,7 +5,7 @@
 ```glsl
 uniform mat4 projectionMatrix;
 uniform mat4 viewMatrix;
-uniform modelMatrix;
+uniform mat4 modelMatrix;
 /*
 * we use the uniform keyword here because the matricies are same for all the vertices
 * To apply a matrix to a vector, we multipy it with the vector
