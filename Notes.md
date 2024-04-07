@@ -19,7 +19,7 @@ void main(){
     // gl_Position only takes a vec4(), but from above we can see that position is a vec3(), so we change it here to vec4()
     gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);
     // the order of the above multiplication matters a lot, for eg the following order for multiplication won't work
->    // gl_Position = modelMatrix * projectionMatrix * viewMatrix * vec4(position, 1.0); this order won't work
+    // gl_Position = modelMatrix * projectionMatrix * viewMatrix * vec4(position, 1.0); this order won't work
 }
 ```
 
