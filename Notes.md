@@ -41,3 +41,10 @@ void main(){
 
 * but the following order for matrix multiplication would work perfectly fine since it follows the default order
 > gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);
+
+
+### Attributes
+
+* By default 3 attributes are sent **from** threejs **to** the vertex shader. Those 3 are position, uv and normal
+* We used the *position* attribute in the vertex shader like this `attribute vec3 position`
+* Not just the default ones, we can also create and send our own custom attributes from threejs to vertex shader
