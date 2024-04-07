@@ -18,8 +18,6 @@ attribute vec3 position;
 void main(){
     // gl_Position only takes a vec4(), but from above we can see that position is a vec3(), so we change it here to vec4()
     gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);
-    // the order of the above multiplication matters a lot, for eg the following order for multiplication won't work
-    // gl_Position = modelMatrix * projectionMatrix * viewMatrix * vec4(position, 1.0); this order won't work
 }
 ```
 
@@ -33,6 +31,13 @@ void main(){
 }
 ```
 
+### Matricies
+
 * modelMatrix applies transformations relative to the Mesh(the mesh of threejs)
 * viewMatrix applies transformations relative to the camera
 * projectionMatrix transforms the co-ordinates into the clip-space co-ordinates
+* the order of the above multiplication matters a lot, for eg the following order for multiplication won't work
+> gl_Position = modelMatrix * projectionMatrix * viewMatrix * vec4(position, 1.0); this order won't work
+
+* but the following order for matrix multiplication would work perfectly fine since it follows the default order
+> gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);
