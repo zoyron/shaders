@@ -7,6 +7,7 @@ import GUI from "lil-gui";
  */
 // Debug
 const gui = new GUI();
+gui.close();
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -26,7 +27,10 @@ const textureLoader = new THREE.TextureLoader();
 const geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
 
 // Material
-const material = new THREE.MeshBasicMaterial();
+const material = new THREE.MeshBasicMaterial({
+  wireframe: true,
+  side: THREE.DoubleSide,
+});
 
 // Mesh
 const mesh = new THREE.Mesh(geometry, material);
