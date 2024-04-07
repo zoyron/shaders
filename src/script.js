@@ -21,12 +21,13 @@ const scene = new THREE.Scene();
  * Textures
  */
 const textureLoader = new THREE.TextureLoader();
+const flagTexture = textureLoader.load('./textures/indianFlag.png');
 
 /**
  * Test mesh
  */
 // Geometry
-const geometry = new THREE.PlaneGeometry(0.75, 0.5, 32, 32);
+const geometry = new THREE.PlaneGeometry(0.75, 0.75, 32, 32);
 const count = geometry.attributes.position.count;
 const randoms = new Float32Array(count);
 for(let i = 0;i<count;i++)
@@ -36,13 +37,15 @@ geometry.setAttribute('aRandom', new THREE.BufferAttribute(randoms, 1));
 console.log(geometry);
 
 // Material
-const material = new THREE.RawShaderMaterial({
+const material = new THREE.ShaderMaterial({
   vertexShader: testVertexShader,
   fragmentShader: testFragmentShader,
   side: THREE.DoubleSide,
   uniforms: {
     uFrequency: {value: new THREE.Vector2(10, 10) },
-    uTime: {value: 0}
+    uTime: {value: 0},
+    uColor: {value: new THREE.Color('blue')},
+    uTexture: {value: flagTexture}
   },
 });
 gui.add(material.uniforms.uFrequency.value, 'x').min(0).max(40).step(0.01).name('frequencyX');
