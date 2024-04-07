@@ -17,5 +17,8 @@ void main(){
     // gl_Position only takes a vec4(), but from above we can see that position is a vec3(), so we change it here to vec4()
     gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position, 1.0);
 }
-
 ```
+
+* modelMatrix applies transformations relative to the Mesh(the mesh of threejs)
+* viewMatrix applies transformations relative to the camera
+* projectionMatrix transforms the co-ordinates into the clip-space co-ordinates
