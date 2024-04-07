@@ -23,6 +23,16 @@ void main(){
 }
 ```
 
+```glsl
+// FRAGMENT SHADER
+
+precision mediump float;
+
+void main(){
+  gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0);
+}
+```
+
 * modelMatrix applies transformations relative to the Mesh(the mesh of threejs)
 * viewMatrix applies transformations relative to the camera
 * projectionMatrix transforms the co-ordinates into the clip-space co-ordinates
