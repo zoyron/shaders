@@ -48,3 +48,5 @@ void main(){
 * By default 3 attributes are sent **from** threejs **to** the vertex shader. Those 3 are position, uv and normal
 * We used the *position* attribute in the vertex shader like this `attribute vec3 position`
 * Not just the default ones, we can also create and send our own custom attributes from threejs to vertex shader
+* We cannot send data or attributes from threejs to fragment shader like we sent in the vertex shader, but we can send data from vertex
+    shader to fragment shader using **varying** by `varying *datatype* variableName`
