@@ -50,3 +50,4 @@ void main(){
 * Not just the default ones, we can also create and send our own custom attributes from threejs to vertex shader
 * We cannot send data or attributes from threejs to fragment shader like we sent in the vertex shader, but we can send data from vertex
     shader to fragment shader using **varying** by <pre>varying <b>datatype</b> variableName</pre>
+* The *uv* co-ordinates(vUv(it means varying uv co-ordinates) in the fragment shader) goes from **0.0, 0.0** on the bottom-left corner to **1.0, 1.0** on the top-right corner.

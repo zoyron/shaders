@@ -9,6 +9,7 @@ import testFragmentShader from "./shaders/test/fragment.glsl";
  */
 // Debug
 const gui = new GUI();
+gui.close();
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -20,13 +21,14 @@ const scene = new THREE.Scene();
  * Test mesh
  */
 // Geometry
-const geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
+const geometry = new THREE.PlaneGeometry(0.75, 0.75, 32, 32);
 
 // Material
 const material = new THREE.ShaderMaterial({
   vertexShader: testVertexShader,
   fragmentShader: testFragmentShader,
   side: THREE.DoubleSide,
+  wireframe: true
 });
 
 // Mesh
