@@ -9,6 +9,7 @@ import testFragmentShader from "./shaders/test/fragment.glsl";
  */
 // Debug
 const gui = new GUI();
+gui.close();
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -17,17 +18,38 @@ const canvas = document.querySelector("canvas.webgl");
 const scene = new THREE.Scene();
 
 /**
+ * Textures
+ */
+const textureLoader = new THREE.TextureLoader();
+const flagTexture = textureLoader.load('./textures/indianFlag.png');
+
+/**
  * Test mesh
  */
 // Geometry
-const geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
+const geometry = new THREE.PlaneGeometry(0.75, 0.75, 32, 32);
+const count = geometry.attributes.position.count;
+const randoms = new Float32Array(count);
+for(let i = 0;i<count;i++)
+  randoms[i] = Math.random();
+
+geometry.setAttribute('aRandom', new THREE.BufferAttribute(randoms, 1));
+console.log(geometry);
 
 // Material
 const material = new THREE.ShaderMaterial({
   vertexShader: testVertexShader,
   fragmentShader: testFragmentShader,
   side: THREE.DoubleSide,
+  uniforms: {
+    uFrequency: {value: new THREE.Vector2(10, 10) },
+    uTime: {value: 0},
+    uColor: {value: new THREE.Color('blue')},
+    uTexture: {value: flagTexture}
+  },
 });
+gui.add(material.uniforms.uFrequency.value, 'x').min(0).max(40).step(0.01).name('frequencyX');
+gui.add(material.uniforms.uFrequency.value, 'y').min(0).max(40).step(0.01).name('frequencyY');
 
 // Mesh
 const mesh = new THREE.Mesh(geometry, material);
@@ -84,7 +106,14 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 /**
  * Animate
  */
+const clock = new THREE.Clock();
+
 const tick = () => {
+  const elapsedTime = clock.getElapsedTime();
+
+  //update materials
+  material.uniforms.uTime.value = elapsedTime;
+
   // Update controls
   controls.update();
 
