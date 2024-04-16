@@ -28,6 +28,7 @@ const material = new THREE.ShaderMaterial({
   vertexShader: testVertexShader,
   fragmentShader: testFragmentShader,
   side: THREE.DoubleSide,
+  wireframe: false
 });
 
 // Mesh
