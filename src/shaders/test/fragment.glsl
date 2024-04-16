@@ -47,6 +47,8 @@ float random (vec2 st) {
 }
 
 void main(){
-  float strength = step(0.0, cnoise(vUv * 10.0));
-  gl_FragColor = vec4(vec3(strength), 1.0);
+  float strength = step(0.5, sin(cnoise(vUv * 10.0) * 20.0));
+  vec3 uvColor = vec3(vUv, 1.0);
+  vec3 mixedColor = mix(vec3(0.0), uvColor, strength);
+  gl_FragColor = vec4(mixedColor, 1.0);
 }
