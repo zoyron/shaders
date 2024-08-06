@@ -20,11 +20,12 @@ const canvas = document.querySelector("canvas.webgl");
 // Scene
 const scene = new THREE.Scene();
 
+
 /**
  * Water
  */
 // Geometry
-const waterGeometry = new THREE.PlaneGeometry(2, 2, 512, 512);
+const waterGeometry = new THREE.PlaneGeometry(3, 3, 512, 512);
 
 // Color
 debugObject.depthColor = '#1674a7';
@@ -104,7 +105,7 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100,
 );
-camera.position.set(1, 1, 1);
+camera.position.set(1, 2, 1);
 scene.add(camera);
 
 // Controls
